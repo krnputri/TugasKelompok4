@@ -19,7 +19,7 @@ public class Main {
             } else if (menu == 3){
                 selectionAsc();
             } else if (menu == 4){
-                bubbleDesc();
+                bubbleDesc(list);
             } else if (menu == 5){
                 selectionDesc();
             } else if (menu == 6) {
@@ -121,7 +121,42 @@ public class Main {
 
     private static void selectionAsc(){}
 
-    private static void bubbleDesc(){}
+    private static void bubbleDesc(List<Integer> list){
+        Integer[] arr = list.toArray(new Integer[0]);
+
+        for(int a = 0; a < (arr.length-1); a++)
+        {
+            System.out.println("Pass "+(a+1)+" :");
+            for(int b = 0; b < arr.length; b++){
+                System.out.print(arr[b]+"  ");
+            }
+            System.out.println("  ");
+            for(int b = 0; b < arr.length-1; b++) {
+                if(arr[b] < arr[b+1]) {
+                    //    proses pertukaran nilai Data
+                    int temp = arr[b];
+                    arr[b] = arr[b+1];
+                    arr[b+1] = temp;
+                }
+
+                if(b < arr.length-(a+1)) {
+                    for(int c = 0; c < arr.length; c++){
+                        System.out.print(arr[c]+"  ");
+                    }
+                    System.out.println("  ");
+                }
+            }
+            ArrayList<Integer> result = new ArrayList<Integer>();
+
+            for(int b = 0; b < arr.length; b++){
+                result.add(arr[b]);
+            }
+            String Res = Arrays.toString(result.toArray()).replace("[", "").replace("]", "");
+            System.out.println(" Result of pass "+(a+1)+":");
+            System.out.println(Res);
+            System.out.println(" ");
+        }
+    }
 
     private static void selectionDesc(){}
 }
