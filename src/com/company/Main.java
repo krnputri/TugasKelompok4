@@ -1,20 +1,19 @@
 package com.company;
 
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 import static java.util.stream.Collectors.toList;
 
 public class Main {
     static final Scanner in = new Scanner(System.in);
     public static void main(String[] args) {
+        List<Integer> list;
         boolean run = true;
         while (run) {
             int menu = showMenu();
             if (menu == 1) {
-                getRandom();
+                list = getRandom();
+                System.out.print(list);
             } else if (menu == 2) {
                 bubbleAsc();
             } else if (menu == 3){
@@ -52,7 +51,7 @@ public class Main {
         return Menu;
     }
 
-    private static void getRandom() {
+    private static List<Integer> getRandom() {
         int min = 0, max = 0;
         boolean validasi =false;
         while (!validasi) {
@@ -73,12 +72,13 @@ public class Main {
             }
         }
         //CEK
+        List<Integer> randomIntegers = new ArrayList<>();
         if (min<max){
-            List<Integer> randomIntegers = new Random().ints(5, min, max).boxed().collect(toList());
-            System.out.print(randomIntegers);
+            randomIntegers = new Random().ints(5, min, max).boxed().collect(toList());
         } else {
             System.out.print("Batas bawah harus lebih kecil \t: ");
         }
+        return randomIntegers;
     }
 
     private static void bubbleAsc(){}
