@@ -29,6 +29,7 @@ public class Main {
         }
     }
     private static int showMenu() {
+        Scanner input = new Scanner(System.in);
         System.out.println("Selamat Datang di Prigram Simulasi Menu\n" +
                 "1. Random Data\n" +
                 "2. Simulasi Bubble Sort - Ascending\n" +
@@ -50,6 +51,10 @@ public class Main {
 
         return Menu;
     }
+    private static Scanner input = new Scanner(System.in);
+    public static int min, max, temp_min, temp_max, i,j,k, random_number []=new int [5];
+    static boolean check = false;
+    private String word;
 
     private static List<Integer> getRandom() {
         int min = 0, max = 0;
@@ -80,6 +85,7 @@ public class Main {
         }
         return randomIntegers;
     }
+
 
     private static void bubbleAsc(List<Integer> list){
         Integer[] arr = list.toArray(new Integer[0]);
@@ -119,7 +125,37 @@ public class Main {
 
     }
 
-    private static void selectionAsc(){}
+    private static void selectionAsc(){
+        if(!check)
+        {
+            System.out.println("\nBelum Masukkan Bilangan, Silahkan Pilih Menu Nomor 1");
+            input();
+        }
+
+        String extreme = "Minimum";
+
+        for(int i=0; i <= random_number.length-2; i++)
+        {
+            temp_max = i;
+
+            k = i+1;
+            System.out.println("\nPass " +k);
+
+            for(int j=1+i; j <= random_number.length-1; j++)
+            {
+                selectDisplay(random_number,extreme,j,temp_max);
+                if(random_number[j]>=random_number[temp_max])
+                {
+                    temp_min = j;
+                }
+            }
+            selectDisplay(random_number,extreme,temp_min,temp_min);
+            swap(random_number,i,temp_min);
+            System.out.println("Result of Pass " +k +": ");
+            displayNumber(random_number);
+        }
+
+    }
 
     private static void bubbleDesc(List<Integer> list){
         Integer[] arr = list.toArray(new Integer[0]);
@@ -158,5 +194,36 @@ public class Main {
         }
     }
 
-    private static void selectionDesc(){}
+    private static void selectionDesc(){
+        if(!check)
+        {
+            System.out.println("\nBelum Masukkan Bilangan, Silahkan Pilih Menu Nomor 1");
+            input();
+        }
+
+        String extreme = "Maximum";
+
+        for(int i=0; i <= random_number.length-2; i++)
+        {
+            temp_max = i;
+
+            k = i+1;
+            System.out.println("\nPass " +k);
+
+            for(int j=1+i; j <= random_number.length-1; j++)
+            {
+                selectDisplay(random_number,extreme,j,temp_max);
+                if(random_number[j]>=random_number[temp_max])
+                {
+                    temp_max = j;
+                }
+            }
+            selectDisplay(random_number,extreme,temp_max,temp_max);
+
+            swap(random_number,i,temp_max);
+            System.out.println("Result of Pass " +k +": ");
+            displayNumber(random_number);
+        }
+
+    }
 }
