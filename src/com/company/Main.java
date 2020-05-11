@@ -226,4 +226,45 @@ public class Main {
         }
 
     }
+    public static void displayNumber(int[] random_number)
+    {
+        for (int k=0; k <= random_number.length-1; k++){
+            System.out.print(random_number[k]+"   ");
+        }
+        System.out.println();
+    }
+
+    public static void Exit(){
+        System.out.println("Terima kasih broo!");
+        System.exit(0);
+    }
+
+    public static void selectDisplay(int[] random_number, String extreme, int b, int temp_min) //printing selection method
+    {
+        for(int k=0; k<=random_number.length-1; k++)
+        {
+            if(k == temp_min)
+            {
+                System.out.print("Current " +extreme +" (" +random_number[k] +")   ");
+            }
+            else if(k == j)
+            {
+                System.out.print("(" +random_number[k] +")   ");
+            }
+            else
+            {
+                System.out.print(random_number[k] +"   ");
+            }
+        }
+        System.out.println();
+    }
+
+    public static void swap(int[] random_number, int var1, int var2)
+    {
+        int temp;
+        temp=random_number[var1];
+        random_number[var1]=random_number[var2];
+        random_number[var2]=temp;
+    }
 }
+
